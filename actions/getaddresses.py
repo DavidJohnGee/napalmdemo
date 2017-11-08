@@ -20,21 +20,18 @@ from st2client.client import Client
 from st2client.models import KeyValuePair
 
 class GetNBGPPingAddresses(Action):
-    def __init__(self, config):
-        self._apikey = config['apikey']
         
     def run(self):
 
         self.client = Client(base_url='http://localhost')
         queryresult = self.client.keys.query(prefix="NBGPPING")
-        ipdict = {}
+        iplist = []
 
         for key in queryresult:
             _name = key.name
             _ip = _name.split(':')[1]
-            _desc = key.value
-            ipdict[_ip] = _desc
+            iplist.append(_ip)
 
-        if ipdict:
-            return (True, ipdict)
+        if iplist:
+            return (True, iplist)
         return (False)

@@ -19,19 +19,36 @@ from st2actions.runners.pythonrunner import Action
 from st2client.client import Client
 from st2client.models import KeyValuePair
 
-class GetNBGPNAPALMDevs(Action):
+class GetNBGPPingAddresses(Action):
         
     def run(self):
 
         self.client = Client(base_url='http://localhost')
-        queryresult = self.client.keys.query(prefix="NBGPDEV")
+        
+        queryresult1 = self.client.keys.query(prefix="NBGPPING")
+        iplist = []
+
+        queryresult2 = self.client.keys.query(prefix="NBGPDEV")
         nbgplist = []
 
-        for key in queryresult:
+        for key in queryresult1:
+            _name = key.name
+            _ip = _name.split(':')[1]
+            iplist.append(_ip)
+
+        for key in queryresult2:
             _name = key.name
             _nname = _name.split(':')[1]
             nbgplist.append(_nname)
+         
+        '''I can't see blue on Windows!. Now we will build a dict for every entry on every device.'''
 
-        if nbgplist:
-            return (True, nbgplist)
+        combinedlist = []
+        for dev in nbgplist:
+           for ip in iplist:
+               combinedlist.append({'device': dev, 'ip': ip})
+
+
+        if combinedlist:
+            return (True, combinedlist)
         return (False)

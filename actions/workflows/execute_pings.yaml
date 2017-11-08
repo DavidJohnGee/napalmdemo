@@ -5,5 +5,14 @@ bgpping.execute_pings:
   type: direct
   tasks:
     task1:
-      action: chatops.post_message channel='#general' message="thing"
-
+      action: bgpping.getcombined
+      publish:
+        fulllist: <% task(task1).result.result %>
+      on-success:
+        - task2
+    
+    task2:
+      with-items: 
+        - thing in <% $.fulllist %>
+      
+      action: chatops.post_message channel='#general' message="Device = <% $.thing.get('device') %>, IP = <% $.thing.get('ip') %>"

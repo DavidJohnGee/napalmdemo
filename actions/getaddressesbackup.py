@@ -19,19 +19,20 @@ from st2actions.runners.pythonrunner import Action
 from st2client.client import Client
 from st2client.models import KeyValuePair
 
-class GetNBGPNAPALMDevs(Action):
+class GetNBGPPingAddresses(Action):
         
     def run(self):
 
         self.client = Client(base_url='http://localhost')
-        queryresult = self.client.keys.query(prefix="NBGPDEV")
-        nbgplist = []
+        queryresult = self.client.keys.query(prefix="NBGPPING")
+        ipdict = {}
 
         for key in queryresult:
             _name = key.name
-            _nname = _name.split(':')[1]
-            nbgplist.append(_nname)
+            _ip = _name.split(':')[1]
+            _desc = key.value
+            ipdict[_ip] = _desc
 
-        if nbgplist:
-            return (True, nbgplist)
+        if ipdict:
+            return (True, ipdict)
         return (False)

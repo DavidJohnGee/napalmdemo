@@ -21,7 +21,7 @@ bgpping.mistralbasic:
             on-success:
                 - task3
         task3:
-            action: core.local cmd="fortune"
+            action: core.local cmd="hostname"
             publish:
-                stdout: <% task(task2).result.stdout %>
-                stderr: <% task(task2).result.stderr %>
+                stdout: <% task(task3).result.stdout %>
+                stderr: <% task(task3).result.stderr %>

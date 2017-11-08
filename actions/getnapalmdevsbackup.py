@@ -25,13 +25,14 @@ class GetNBGPNAPALMDevs(Action):
 
         self.client = Client(base_url='http://localhost')
         queryresult = self.client.keys.query(prefix="NBGPDEV")
-        nbgplist = []
+        nbgpdev = {}
 
         for key in queryresult:
             _name = key.name
             _nname = _name.split(':')[1]
-            nbgplist.append(_nname)
+            _desc = key.value
+            nbgpdev[_nname] = _desc
 
-        if nbgplist:
-            return (True, nbgplist)
+        if nbgpdev:
+            return (True, nbgpdev)
         return (False)
