@@ -1,0 +1,47 @@
+---
+version: '2.0'
+
+bgpping.napalmpinger:
+  type: direct
+  input:
+    - ndevice
+    - nping
+  tasks:
+
+    task1:
+      action: core.noop
+      publish:
+        devtypekey: "system.NBGPDEV:<% $.ndevice %>"
+      on-success:
+        - task2 
+
+    task2:
+      action: core.noop
+      publish:
+        devtype: <% st2kv($.devtypekey) %>
+      on-success:
+        - task3
+
+    task3:
+      action: core.noop
+      on-success:
+        - pingcsr : <% $.devtype = 'CSR' %>
+        - pingjunos  : <% $.devtype = 'JUNOS' %>
+
+    pingcsr:
+      action: napalm.cli hostname="<% $.ndevice %>" commands=["ping <% $.nping %> repeat 5"]
+      publish:
+        pingresults: <% task(pingcsr).result.result %>
+      on-success:
+        - broadcast
+
+    pingjunos:
+      action: napalm.ping hostname=<% str($.ndevice) %> destination=<% str($.nping) %>
+      publish:
+        pingresults: <% task(pingjunos).result.result %>
+      on-success:
+        - broadcast
+
+
+    broadcast:
+      action: chatops.post_message channel='#general' message="Device = <% $.ndevice  %>, Results = <% str($.pingresults) %>"

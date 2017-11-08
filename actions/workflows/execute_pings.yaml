@@ -15,4 +15,4 @@ bgpping.execute_pings:
       with-items: 
         - thing in <% $.fulllist %>
       
-      action: chatops.post_message channel='#general' message="Device = <% $.thing.get('device') %>, IP = <% $.thing.get('ip') %>"
+      action: bgpping.napalmpinger ndevice="<% str($.thing.get('device')) %>" nping="<% str($.thing.get('ip')) %>"

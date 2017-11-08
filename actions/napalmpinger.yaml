@@ -1,0 +1,14 @@
+---
+  name: napalmpinger
+  pack: bgpping
+  runner_type: mistral-v2
+  enabled: true
+  entry_point: workflows/napalmpinger.yaml
+  description: Workflow that executes pings from network devices using NAPALM and then posts results to Slack. DO NOT USE DIRECTLY.
+  parameters: 
+    ndevice:
+      required: true
+      type: string
+    nping:
+      type: string
+      required: true
