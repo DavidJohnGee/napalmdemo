@@ -33,15 +33,26 @@ bgpping.napalmpinger:
       publish:
         pingresults: <% task(pingcsr).result.result %>
       on-success:
-        - broadcast
+        - parsecsrresult
 
     pingjunos:
       action: napalm.ping hostname=<% str($.ndevice) %> destination=<% str($.nping) %>
       publish:
         pingresults: <% task(pingjunos).result.result %>
       on-success:
+        - parsejunosresult
+
+    parsecsrresult:
+      action: bgpping.parsecsrresult input=<% $.pingresults %>
+      publish: finalresult: <% task(parsecsrresult).result.result %>
+      on-success: 
         - broadcast
 
+    parsejunosresult:
+      action: bgpping.parsejunosresult input=<% $.pingresults %>
+      publish: finalresult: <% task(parsejunosresult).result.result %>
+      on-success:
+        - broadcast
 
     broadcast:
-      action: chatops.post_message channel='#general' message="Device = <% $.ndevice  %>, Results = <% str($.pingresults) %>"
+      action: chatops.post_message channel='#general' message="Device = <% $.ndevice %> Results = <% str($.finalresult) %>"
