@@ -1,0 +1,10 @@
+---
+ref: bgpping
+name : bgpping
+description : Experimental Pack for pinging from nodes to validate BGP reachability.
+keywords :
+  - BGP
+  - Ping
+version : 0.0.1
+author : davidjohngee
+email : david.gee@ipengineer.net

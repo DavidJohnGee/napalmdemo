@@ -1,0 +1,6 @@
+---
+name: getnapalmdevs
+runner_type: python-script
+description: "Parse KV store for keys matching: NBGPDEVICE:DEV and return a list."
+enabled: true
+entry_point: getnapalmdevs.py

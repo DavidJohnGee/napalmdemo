@@ -1,0 +1,9 @@
+---
+version: '2.0'
+
+bgpping.execute_pings:
+  type: direct
+  tasks:
+    task1:
+      action: chatops.post_message channel='#general' message="thing"
+
