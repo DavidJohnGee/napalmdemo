@@ -1,0 +1,11 @@
+---
+name: delpingnode
+runner_type: python-script
+description: "Delete devices for NAPALM to ping."
+enabled: true
+entry_point: delpingnode.py
+parameters:
+  ip:
+    type: string
+    required: true
+    description: "The IP address of the node to ping."

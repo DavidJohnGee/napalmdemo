@@ -1,0 +1,15 @@
+---
+name: adddevice
+runner_type: python-script
+description: "Add NAPALM device to KV store."
+enabled: true
+entry_point: adddevice.py
+parameters:
+  name:
+    type: string
+    required: true
+    description: "The name of the device in NAPALM parlance."
+  kind:
+    type: string
+    required: true
+    description: "This will be: CSR/JUNOS."

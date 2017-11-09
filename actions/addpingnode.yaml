@@ -1,0 +1,15 @@
+---
+name: addpingnode
+runner_type: python-script
+description: "Add devices for NAPALM to ping."
+enabled: true
+entry_point: addpingnode.py
+parameters:
+  ip:
+    type: string
+    required: true
+    description: "The IP address of the node to ping."
+  desc:
+    type: string
+    required: true
+    description: "Short description of what the node is."
