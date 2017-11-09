@@ -19,3 +19,9 @@ bgpping.wfaddprefix:
       with-items:
         - dev in <% $.devices %>
       action: bgpping.wfaddprefixsub1 device=<% $.dev %> prefixes=<% $.prefixes %>
+      on-success:
+      - validate
+
+    validate:
+      action: bgpping.execute_pings
+

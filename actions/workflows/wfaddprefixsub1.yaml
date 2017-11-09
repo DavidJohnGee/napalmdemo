@@ -54,11 +54,18 @@ bgpping.wfaddprefixsub1:
       publish:
         configureresult: <% task(pushconfig).result.result %>
       on-success:
-        - validate
         - deleteconfigfile
 
     deleteconfigfile:
       action: bgpping.deleteconfigfile filename=<% $.filename %>  
+      on-success:
+        - clearcsrbgpsoft : <% $.devtype = 'CSR' %>
+        - clearjunosbgpsoft  : <% $.devtype = 'JUNOS' %>
 
-    validate:
-      action: bgpping.execute_pings
+
+    clearjunosbgpsoft:
+      action: napalm.cli hostname=<% $.device %> commands=["clear bgp neighbor soft-inbound"]
+
+    clearcsrbgpsoft:
+      action: napalm.cli hostname=<% $.device %> commands=["clear bgp ipv4 unicast * soft in"]
+

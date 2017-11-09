@@ -22,7 +22,7 @@ from jinja2 import Environment, BaseLoader
 
 jinboundprefixlist = """
 {%- for pfx in prefixes -%}
-ip prefix list permit {{ pfx }}
+ip prefix-list INBOUND permit {{ pfx }}
 {% endfor -%}
 """
 
