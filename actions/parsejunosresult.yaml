@@ -1,0 +1,12 @@
+---
+name: parsejunosresult
+runner_type: python-script
+description: "Parse Juniper Junos ping responses."
+enabled: true
+entry_point: parsejunosresult.py
+parameters:
+  response:
+    type: object
+    required: true
+
+

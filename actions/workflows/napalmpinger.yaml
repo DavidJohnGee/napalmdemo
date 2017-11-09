@@ -43,16 +43,18 @@ bgpping.napalmpinger:
         - parsejunosresult
 
     parsecsrresult:
-      action: bgpping.parsecsrresult input=<% $.pingresults %>
-      publish: finalresult: <% task(parsecsrresult).result.result %>
+      action: bgpping.parsecsrresult response=<% $.pingresults %>
+      publish: 
+        finalresult: <% task(parsecsrresult).result.result %>
       on-success: 
         - broadcast
 
     parsejunosresult:
-      action: bgpping.parsejunosresult input=<% $.pingresults %>
-      publish: finalresult: <% task(parsejunosresult).result.result %>
+      action: bgpping.parsejunosresult response=<% $.pingresults %>
+      publish: 
+        finalresult: <% task(parsejunosresult).result.result %>
       on-success:
         - broadcast
 
     broadcast:
-      action: chatops.post_message channel='#general' message="Device = <% $.ndevice %> Results = <% str($.finalresult) %>"
+      action: chatops.post_message channel='#general' message="Device = <% $.ndevice %> | Node = <% $.nping %> | Results = <% str($.finalresult) %>"

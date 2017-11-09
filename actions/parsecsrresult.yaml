@@ -1,0 +1,10 @@
+---
+name: parsecsrresult
+runner_type: python-script
+description: "Parse Cisco CSR ping responses."
+enabled: true
+entry_point: parsecsrresult.py
+parameters:
+  response:
+    type: object
+    required: true
