@@ -1,0 +1,16 @@
+---
+  name: wfaddprefixsub1
+  pack: bgpping
+  runner_type: mistral-v2
+  enabled: true
+  entry_point: workflows/wfaddprefixsub1.yaml
+  description: Workflow that generates an inbound prefix-list for CSR/JUNOS, pushes it, clears tables (soft) and triggers tests..
+  parameters: 
+    device:
+      type: string
+      required: true
+      description: Device NAPALM name.
+    prefixes:
+      type: array
+      required: true
+      description: Prefix in the style of [192.168.10.0/24, etc].

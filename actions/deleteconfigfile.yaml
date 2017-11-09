@@ -1,0 +1,11 @@
+---
+name: deleteconfigfile
+runner_type: python-script
+description: "Erase config file snippet."
+enabled: true
+entry_point: deleteconfigfile.py
+parameters:
+  filename:
+    type: string
+    required: true
+    description: "The configuration to write."

@@ -1,0 +1,64 @@
+---
+version: '2.0'
+
+bgpping.wfaddprefixsub1:
+  type: direct
+  input:
+    - device
+    - prefixes
+  tasks:
+
+    task1:
+      action: core.noop
+      publish:
+        devtypekey: "system.NBGPDEV:<% $.device %>"
+      on-success:
+        - task2 
+
+    task2:
+      action: core.noop
+      publish:
+        devtype: <% st2kv($.devtypekey) %>
+      on-success:
+        - task3
+
+    task3:
+      action: core.noop
+      on-success:
+        - createcsrprefixlist : <% $.devtype = 'CSR' %>
+        - createjunosprefixlist  : <% $.devtype = 'JUNOS' %>
+
+    createcsrprefixlist:
+      action: bgpping.gencsrpfxlist prefixes=<% $.prefixes %>
+      publish:
+        configdata: <% task(createcsrprefixlist).result.result %>
+      on-success:
+        - writeconfigfile 
+
+    createjunosprefixlist:
+      action: bgpping.genjunospfxlist prefixes=<% $.prefixes %>
+      publish:
+        configdata: <% task(createjunosprefixlist).result.result %>
+      on-success:
+        - writeconfigfile
+
+    writeconfigfile:
+      action: bgpping.writeconfig config=<% $.configdata %>
+      publish:
+        filename: <% task(writeconfigfile).result.result %>
+      on-success:
+        - pushconfig
+
+    pushconfig:
+      action: napalm.loadconfig hostname=<% $.device %> config_file=<% $.filename %>
+      publish:
+        configureresult: <% task(pushconfig).result.result %>
+      on-success:
+        - validate
+        - deleteconfigfile
+
+    deleteconfigfile:
+      action: bgpping.deleteconfigfile filename=<% $.filename %>  
+
+    validate:
+      action: bgpping.execute_pings

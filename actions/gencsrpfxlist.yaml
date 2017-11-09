@@ -1,0 +1,13 @@
+---
+name: gencsrpfxlist
+runner_type: python-script
+description: "Create config snippet from j2 template for CSR inbound filter."
+enabled: true
+entry_point: gencsrpfxlist.py
+parameters:
+  prefixes:
+    type: array
+    required: true
+    description: "Array of prefixes [192.168.0.0/24, etc]."
+
+

@@ -1,0 +1,11 @@
+---
+name: writeconfig
+runner_type: python-script
+description: "Write Config to file and return fully qualified filename."
+enabled: true
+entry_point: writeconfig.py
+parameters:
+  config:
+    type: string
+    required: true
+    description: "The configuration to write."

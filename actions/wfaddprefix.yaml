@@ -1,0 +1,24 @@
+---
+  name: wfaddprefix
+  pack: bgpping
+  runner_type: mistral-v2
+  enabled: true
+  entry_point: workflows/wfaddprefix.yaml
+  description: Workflow that adds prefix list entries to the inbound prefix list on gateway routers.
+  parameters: 
+    devices:
+      type: array
+      required: true
+      description: Device list [CSR01, SRX01] etc.
+    prefixes:
+      type: array
+      required: true
+      description: Prefix in the style of 192.168.10.0/24.
+    test:
+      type: string
+      required: false
+      description: IP address (x.x.x.x) of reachable node.
+    test_desc:
+      type: string
+      required: false
+      description: Description for test (port/device or something).
