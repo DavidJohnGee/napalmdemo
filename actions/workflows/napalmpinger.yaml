@@ -43,14 +43,14 @@ napalmdemo.napalmpinger:
         - parsejunosresult
 
     parsecsrresult:
-      action: napalmdemo.parsecsrresult response=<% $.pingresults %>
+      action: napalmdemo.parse_csr_result response=<% $.pingresults %>
       publish: 
         finalresult: <% task(parsecsrresult).result.result %>
       on-success: 
         - broadcast
 
     parsejunosresult:
-      action: napalmdemo.parsejunosresult response=<% $.pingresults %>
+      action: napalmdemo.parse_junos_result response=<% $.pingresults %>
       publish: 
         finalresult: <% task(parsejunosresult).result.result %>
       on-success:

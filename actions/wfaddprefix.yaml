@@ -16,9 +16,9 @@
       description: Prefix in the style of 192.168.10.0/24.
     test:
       type: string
-      required: false
+      required: true
       description: IP address (x.x.x.x) of reachable node.
     test_desc:
       type: string
-      required: false
+      required: true
       description: Description for test (port/device or something).
