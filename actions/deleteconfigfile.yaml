@@ -1,5 +1,5 @@
 ---
-name: delete_configfile
+name: delete_config_file
 runner_type: python-script
 description: "Erase config file snippet."
 enabled: true
