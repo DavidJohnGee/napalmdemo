@@ -20,7 +20,7 @@ napalmdemo.wf_add_prefix:
         - dev in <% $.devices %>
       action: napalmdemo.wfaddprefixsub1 device=<% $.dev %> prefixes=<% $.prefixes %>
       on-success:
-      - validate
+        - validate
 
     validate:
       action: napalmdemo.execute_pings
