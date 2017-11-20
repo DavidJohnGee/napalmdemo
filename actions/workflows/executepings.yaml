@@ -5,7 +5,7 @@ napalmdemo.execute_pings:
   type: direct
   tasks:
     task1:
-      action: napalmdemo.getcombined
+      action: napalmdemo.get_combined
       publish:
         fulllist: <% task(task1).result.result %>
       on-success:
