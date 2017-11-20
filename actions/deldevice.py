@@ -22,7 +22,7 @@ from st2client.models import KeyValuePair
 class DelDevice(Action):
         
     def run(self, name):
-        keyname = "NBGPDEV:" + name
+        keyname = "NDEV:" + name
         self.delkvpair(keyname)
         results = ("Key deleted: " + name)
         return (True, results)

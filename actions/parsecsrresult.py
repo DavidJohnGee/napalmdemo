@@ -26,7 +26,6 @@ class ParseCSRResult(Action):
         final = ""
 
         for key, value in stringified.iteritems():
-            # self.logger.info("BGPPING: " + str(stringified[key][3]))
             final = stringified[key][3] 
 
         if "(0/5)" in final:

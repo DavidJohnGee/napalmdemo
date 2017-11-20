@@ -1,6 +1,6 @@
 ---
   name: wfaddprefixsub1
-  pack: bgpping
+  pack: napalmdemo
   runner_type: mistral-v2
   enabled: true
   entry_point: workflows/wfaddprefixsub1.yaml

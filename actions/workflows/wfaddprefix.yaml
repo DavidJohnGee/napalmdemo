@@ -1,7 +1,7 @@
 ---
 version: '2.0'
 
-bgpping.wfaddprefix:
+napalmdemo.wf_add_prefix:
   type: direct
   input:
     - devices
@@ -11,17 +11,17 @@ bgpping.wfaddprefix:
   tasks:
 
     task1:
-      action: bgpping.addpingnode ip=<% $.test %> desc=<% $.test_desc %>
+      action: napalmdemo.add_ping_node ip=<% $.test %> desc=<% $.test_desc %>
       on-complete:
         - task2 
 
     task2:
       with-items:
         - dev in <% $.devices %>
-      action: bgpping.wfaddprefixsub1 device=<% $.dev %> prefixes=<% $.prefixes %>
+      action: napalmdemo.wfaddprefixsub1 device=<% $.dev %> prefixes=<% $.prefixes %>
       on-success:
       - validate
 
     validate:
-      action: bgpping.execute_pings
+      action: napalmdemo.execute_pings
 

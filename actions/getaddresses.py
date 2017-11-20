@@ -24,7 +24,7 @@ class GetNBGPPingAddresses(Action):
     def run(self):
 
         self.client = Client(base_url='http://localhost')
-        queryresult = self.client.keys.query(prefix="NBGPPING")
+        queryresult = self.client.keys.query(prefix="NPING")
         iplist = []
 
         for key in queryresult:

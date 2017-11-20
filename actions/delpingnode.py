@@ -22,7 +22,7 @@ from st2client.models import KeyValuePair
 class DelPing(Action):
         
     def run(self, ip):
-        keyname = "NBGPPING:" + ip
+        keyname = "NPING:" + ip
         self.delkvpair(keyname)
         results = ("Key deleted: " + ip)
         return (True, results)

@@ -1,5 +1,5 @@
 ---
-name: parsejunosresult
+name: parse_junos_result
 runner_type: python-script
 description: "Parse Juniper Junos ping responses."
 enabled: true

@@ -1,8 +1,8 @@
 ---
   name: execute_pings
-  pack: bgpping
+  pack: napalmdemo
   runner_type: mistral-v2
   enabled: true
-  entry_point: workflows/execute_pings.yaml
+  entry_point: workflows/executepings.yaml
   parameters: {}
   description: Workflow that executes pings from network devices using NAPALM.

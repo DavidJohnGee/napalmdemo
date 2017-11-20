@@ -22,7 +22,7 @@ from st2client.models import KeyValuePair
 class AddPing(Action):
         
     def run(self, ip, desc):
-        keyname = "NBGPPING:" + ip
+        keyname = "NPING:" + ip
         self.setkvpair(keyname, desc)
         results = ("Key created: " + ip + ": " + desc)
         return (True, results)

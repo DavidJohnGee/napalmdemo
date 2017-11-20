@@ -1,28 +1,28 @@
 [
     {
         "encrypted": false,
-        "name": "NBGPPING:10.10.2.1",
+        "name": "NPING:10.10.2.1",
         "scope": "st2kv.system",
         "secret": false,
         "value": "SLX VRF VMNIC7 Lo20"
     },
     {
         "encrypted": false,
-        "name": "NBGPPING:10.10.1.1",
+        "name": "NPING:10.10.1.1",
         "scope": "st2kv.system",
         "secret": false,
         "value": "SLX VRF VMNIC6 Lo10"
     },
     {
         "encrypted": false,
-        "name": "NBGPDEV:SRX01",
+        "name": "NDEV:SRX01",
         "scope": "st2kv.system",
         "secret": false,
         "value": "JUNOS"
     },
     {
         "encrypted": false,
-        "name": "NBGPDEV:CSR01",
+        "name": "NDEV:CSR01",
         "scope": "st2kv.system",
         "secret": false,
         "value": "CSR"

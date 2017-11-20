@@ -24,7 +24,7 @@ class GetNBGPNAPALMDevs(Action):
     def run(self):
 
         self.client = Client(base_url='http://localhost')
-        queryresult = self.client.keys.query(prefix="NBGPDEV")
+        queryresult = self.client.keys.query(prefix="NDEV")
         nbgplist = []
 
         for key in queryresult:

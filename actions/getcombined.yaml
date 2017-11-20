@@ -1,5 +1,5 @@
 ---
-name: getcombined
+name: get_combined
 runner_type: python-script
 description: "Parse KV store for NAPALM device keys and nodes to ping. Return dict with each item."
 enabled: true

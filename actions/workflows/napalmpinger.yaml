@@ -1,7 +1,7 @@
 ---
 version: '2.0'
 
-bgpping.napalmpinger:
+napalmdemo.napalmpinger:
   type: direct
   input:
     - ndevice
@@ -11,7 +11,7 @@ bgpping.napalmpinger:
     task1:
       action: core.noop
       publish:
-        devtypekey: "system.NBGPDEV:<% $.ndevice %>"
+        devtypekey: "system.NDEV:<% $.ndevice %>"
       on-success:
         - task2 
 
@@ -43,14 +43,14 @@ bgpping.napalmpinger:
         - parsejunosresult
 
     parsecsrresult:
-      action: bgpping.parsecsrresult response=<% $.pingresults %>
+      action: napalmdemo.parsecsrresult response=<% $.pingresults %>
       publish: 
         finalresult: <% task(parsecsrresult).result.result %>
       on-success: 
         - broadcast
 
     parsejunosresult:
-      action: bgpping.parsejunosresult response=<% $.pingresults %>
+      action: napalmdemo.parsejunosresult response=<% $.pingresults %>
       publish: 
         finalresult: <% task(parsejunosresult).result.result %>
       on-success:

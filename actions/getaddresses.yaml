@@ -1,6 +1,6 @@
 ---
-name: getaddresses
+name: get_addresses
 runner_type: python-script
-description: "Parse KV store for keys matching: NBGPPING:x.x.x.x and return a dict."
+description: "Parse KV store for keys matching: NPING:x.x.x.x and return a dict."
 enabled: true
 entry_point: getaddresses.py

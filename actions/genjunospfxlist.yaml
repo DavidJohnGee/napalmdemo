@@ -1,5 +1,5 @@
 ---
-name: genjunospfxlist
+name: create_junos_prefix_list
 runner_type: python-script
 description: "Create config snippet from j2 template for SRX inbound filter."
 enabled: true

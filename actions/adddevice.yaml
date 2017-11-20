@@ -1,5 +1,5 @@
 ---
-name: adddevice
+name: add_device
 runner_type: python-script
 description: "Add NAPALM device to KV store."
 enabled: true

@@ -1,5 +1,5 @@
 ---
-name: writeconfig
+name: write_config
 runner_type: python-script
 description: "Write Config to file and return fully qualified filename."
 enabled: true

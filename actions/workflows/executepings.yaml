@@ -1,11 +1,11 @@
 ---
 version: '2.0'
 
-bgpping.execute_pings:
+napalmdemo.execute_pings:
   type: direct
   tasks:
     task1:
-      action: bgpping.getcombined
+      action: napalmdemo.getcombined
       publish:
         fulllist: <% task(task1).result.result %>
       on-success:
@@ -15,4 +15,4 @@ bgpping.execute_pings:
       with-items: 
         - thing in <% $.fulllist %>
       
-      action: bgpping.napalmpinger ndevice="<% str($.thing.get('device')) %>" nping="<% str($.thing.get('ip')) %>"
+      action: napalmdemo.napalmpinger ndevice="<% str($.thing.get('device')) %>" nping="<% str($.thing.get('ip')) %>"

@@ -1,5 +1,5 @@
 ---
-name: parsecsrresult
+name: parse_csr_result
 runner_type: python-script
 description: "Parse Cisco CSR ping responses."
 enabled: true

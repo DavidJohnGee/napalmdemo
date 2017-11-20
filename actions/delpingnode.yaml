@@ -1,5 +1,5 @@
 ---
-name: delpingnode
+name: del_pingnode
 runner_type: python-script
 description: "Delete devices for NAPALM to ping."
 enabled: true

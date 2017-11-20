@@ -1,5 +1,5 @@
 ---
-name: addpingnode
+name: add_pingnode
 runner_type: python-script
 description: "Add devices for NAPALM to ping."
 enabled: true

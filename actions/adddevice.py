@@ -22,7 +22,7 @@ from st2client.models import KeyValuePair
 class AddDevice(Action):
         
     def run(self, name, kind):
-        keyname = "NBGPDEV:" + name
+        keyname = "NDEV:" + name
         self.setkvpair(keyname, kind)
         results = ("Key created: " + name + ": " + kind)
         return (True, results)

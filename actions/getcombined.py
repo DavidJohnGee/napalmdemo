@@ -25,10 +25,10 @@ class GetNBGPPingAddresses(Action):
 
         self.client = Client(base_url='http://localhost')
         
-        queryresult1 = self.client.keys.query(prefix="NBGPPING")
+        queryresult1 = self.client.keys.query(prefix="NPING")
         iplist = []
 
-        queryresult2 = self.client.keys.query(prefix="NBGPDEV")
+        queryresult2 = self.client.keys.query(prefix="NDEV")
         nbgplist = []
 
         for key in queryresult1:

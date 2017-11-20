@@ -1,7 +1,7 @@
 ---
 version: '2.0'
 
-bgpping.wfaddprefixsub1:
+napalmdemo.wfaddprefixsub1:
   type: direct
   input:
     - device
@@ -11,7 +11,7 @@ bgpping.wfaddprefixsub1:
     task1:
       action: core.noop
       publish:
-        devtypekey: "system.NBGPDEV:<% $.device %>"
+        devtypekey: "system.NDEV:<% $.device %>"
       on-success:
         - task2 
 
@@ -29,21 +29,21 @@ bgpping.wfaddprefixsub1:
         - createjunosprefixlist  : <% $.devtype = 'JUNOS' %>
 
     createcsrprefixlist:
-      action: bgpping.gencsrpfxlist prefixes=<% $.prefixes %>
+      action: napalmdemo.create_csr_prefix_list prefixes=<% $.prefixes %>
       publish:
         configdata: <% task(createcsrprefixlist).result.result %>
       on-success:
         - writeconfigfile 
 
     createjunosprefixlist:
-      action: bgpping.genjunospfxlist prefixes=<% $.prefixes %>
+      action: napalmdemo.create_junos_prefix_list prefixes=<% $.prefixes %>
       publish:
         configdata: <% task(createjunosprefixlist).result.result %>
       on-success:
         - writeconfigfile
 
     writeconfigfile:
-      action: bgpping.writeconfig config=<% $.configdata %>
+      action: napalmdemo.write_config config=<% $.configdata %>
       publish:
         filename: <% task(writeconfigfile).result.result %>
       on-success:
@@ -57,11 +57,10 @@ bgpping.wfaddprefixsub1:
         - deleteconfigfile
 
     deleteconfigfile:
-      action: bgpping.deleteconfigfile filename=<% $.filename %>  
+      action: napalmdemo.delete_config_file filename=<% $.filename %>  
       on-success:
         - clearcsrbgpsoft : <% $.devtype = 'CSR' %>
         - clearjunosbgpsoft  : <% $.devtype = 'JUNOS' %>
-
 
     clearjunosbgpsoft:
       action: napalm.cli hostname=<% $.device %> commands=["clear bgp neighbor soft-inbound"]

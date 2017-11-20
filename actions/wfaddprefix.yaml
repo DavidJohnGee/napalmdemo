@@ -1,9 +1,9 @@
 ---
-  name: wfaddprefix
-  pack: bgpping
+  name: wf_add_prefix
+  pack: napalmdemo
   runner_type: mistral-v2
   enabled: true
-  entry_point: workflows/wfaddprefix.yaml
+  entry_point: workflows/wf_add_prefix.yaml
   description: Workflow that adds prefix list entries to the inbound prefix list on gateway routers.
   parameters: 
     devices:

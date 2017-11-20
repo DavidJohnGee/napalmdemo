@@ -1,7 +1,7 @@
 ---
-ref: bgpping
-name : bgpping
-description : Experimental Pack for pinging from nodes to validate BGP reachability.
+ref: napalm-tools
+name : napalm-tools
+description : Demo pack for NAPALM.
 keywords :
   - BGP
   - Ping

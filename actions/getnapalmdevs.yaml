@@ -1,5 +1,5 @@
 ---
-name: getnapalmdevs
+name: get_napalm_devs
 runner_type: python-script
 description: "Parse KV store for keys matching: NBGPDEVICE:DEV and return a list."
 enabled: true
