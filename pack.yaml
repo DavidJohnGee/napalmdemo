@@ -1,6 +1,6 @@
 ---
-ref: napalm-tools
-name : napalm-tools
+ref: napalmdemo
+name : napalmdemo
 description : Demo pack for NAPALM.
 keywords :
   - BGP
