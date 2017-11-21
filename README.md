@@ -1,6 +1,6 @@
 ## NAPALM Demo Pack
 
-__Contents__
+__Introduction__
 
 This pack offers some 'wrapping' of NAPALM to demonstrate what could be possible for your project.
 
@@ -20,6 +20,8 @@ Once you're at this stage, it's possible to exercise the workflows.
 3.	Enjoy and sit smugly watching your tests automate.
 
 This could be used as a part of a CI/CD pipeline to validate reachability after configuration push.
+
+Note, also in the `deviceconfigs` directory resides the base configuration for CSR01 and SRX01. Feel free to use these for speed if you need it!
 
 __Installation__
 
