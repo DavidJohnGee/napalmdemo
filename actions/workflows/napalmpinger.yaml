@@ -8,21 +8,21 @@ napalmdemo.napalmpinger:
     - nping
   tasks:
 
-    task1:
+    getdevtypekey:
       action: core.noop
       publish:
         devtypekey: "system.NDEV:<% $.ndevice %>"
       on-success:
-        - task2 
+        - getdevtype 
 
-    task2:
+    getdevtype:
       action: core.noop
       publish:
         devtype: <% st2kv($.devtypekey) %>
       on-success:
-        - task3
+        - branchontype
 
-    task3:
+    branchontype:
       action: core.noop
       on-success:
         - pingcsr : <% $.devtype = 'CSR' %>

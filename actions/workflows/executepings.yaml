@@ -4,14 +4,14 @@ version: '2.0'
 napalmdemo.execute_pings:
   type: direct
   tasks:
-    task1:
+    getlist:
       action: napalmdemo.get_combined
       publish:
-        fulllist: <% task(task1).result.result %>
+        fulllist: <% task(getlist).result.result %>
       on-success:
-        - task2
+        - dopings
     
-    task2:
+    dopings:
       with-items: 
         - thing in <% $.fulllist %>
       

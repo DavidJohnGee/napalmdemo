@@ -8,19 +8,21 @@ napalmdemo.wf_add_prefix:
     - prefixes
     - test
     - test_desc
+    - validate
+
   tasks:
 
-    task1:
+    addpingkey:
       action: napalmdemo.add_ping_node ip=<% $.test %> desc=<% $.test_desc %>
       on-complete:
-        - task2 
+        - branchtosubwf 
 
-    task2:
+    branchtosubwf:
       with-items:
         - dev in <% $.devices %>
       action: napalmdemo.wfaddprefixsub1 device=<% $.dev %> prefixes=<% $.prefixes %>
       on-success:
-        - validate
+        - validate: <% $.validate = true %>
 
     validate:
       action: napalmdemo.execute_pings

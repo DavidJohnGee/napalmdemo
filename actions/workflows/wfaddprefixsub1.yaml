@@ -8,21 +8,21 @@ napalmdemo.wfaddprefixsub1:
     - prefixes
   tasks:
 
-    task1:
+    getdevtype:
       action: core.noop
       publish:
         devtypekey: "system.NDEV:<% $.device %>"
       on-success:
-        - task2 
+        - getdevtypekey
 
-    task2:
+    getdevtypekey:
       action: core.noop
       publish:
         devtype: <% st2kv($.devtypekey) %>
       on-success:
-        - task3
+        - branchontype
 
-    task3:
+    branchontype:
       action: core.noop
       on-success:
         - createcsrprefixlist : <% $.devtype = 'CSR' %>

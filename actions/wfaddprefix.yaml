@@ -22,3 +22,7 @@
       type: string
       required: true
       description: Description for test (port/device or something).
+    validate:
+      type: boolean
+      description: Run validation after add?
+      required: false
