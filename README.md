@@ -36,7 +36,7 @@ __Usage__
 
 Go here for a Youtube video on basic usage.
 
-*COMING_SOON!*
+https://www.youtube.com/watch?v=MD3P3_MR8J0
 
 __Support__
 
